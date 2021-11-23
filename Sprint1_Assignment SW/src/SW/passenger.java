@@ -6,14 +6,25 @@ public class passenger implements Notification{
     Driver D1;
     Scanner in=new Scanner(System.in);
     Map<String,String> area=new HashMap<String,String>() ;
-Driver d;
+    ArrayList<RegisterAsPass> passengers=new ArrayList<RegisterAsPass>();
+    Driver d;
     String source,dest;
     ArrayList<Register> Pass=new ArrayList<>();
     void setSource(String source){this.source=source;}
     String getSource(){return source;}
     void setDest(String dest){this.dest=dest;}
     String getDest(){return dest;}
-
+   void Addpass(RegisterAsPass p){
+        passengers.add(p);
+   }
+    //should search about email and pass
+   void searchPass(RegisterAsPass p){
+        if(passengers.contains(p)){
+            //enter on system
+        }else {
+            System.out.println("you 'r not on the system ,please Sign UP ");
+        }
+   }
     void req_aride(String source,String Dest){
         setDest(source);
         setDest(Dest);
@@ -26,17 +37,6 @@ Driver d;
     public void update() {
 
     }
-
-    @Override
-    public void subscribe() {
-
-    }
-
-    @Override
-    public void unsubscribe() {
-
-    }
-
     @Override
     public void Notify() {
 

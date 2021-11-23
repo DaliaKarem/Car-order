@@ -1,26 +1,30 @@
 package SW;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Admin {
     boolean check=true;
-    Driver d;
+    ArrayList<Driver> a=new ArrayList<>();
     Scanner i=new Scanner(System.in);
-    public void pendingAccount()
-    {  System.out.println(" Wating.....");
-
-    }
     public boolean suspend()
     {
         System.out.println(" Do you want to suspend this account ? (T/F)");
 
         char c=i.next().charAt(0);
         if(c=='T')
-        { d.suspend();
-
+        {
+            synchronized (a)
+                {
+                    System.out.println("Waiting..");
+                    try {
+                        a.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
         }
         else{
-           // l.setUserName(d.user_Name);
-            //l.setPass(d.pass);
+          //enter on the system
         }
         return check;
     }
@@ -34,6 +38,8 @@ public class Admin {
         }
         else{
             System.out.println("successfully registered ");
+            //enter on the System
+
         }
         return check;
     }
